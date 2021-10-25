@@ -16,9 +16,12 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(MONGODB_URI, {
+// Connect application fo Mongoose
+// Make sure environmental variables are in place
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useFindAndModify: false
+  
 });
 
 // routes
