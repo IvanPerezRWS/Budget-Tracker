@@ -2,7 +2,6 @@
 let db;
 const request = indexedDB.open("budget_tracker", 1);
 
-// this event will emit if the database version changes (nonexistant to version 1, v1 to v2, etc.)
 request.onupgradeneeded = function(event) {
   // save a reference to the database 
   const db = event.target.result;
@@ -22,10 +21,10 @@ request.onsuccess = function (event) {
 };
 
 request.onerror = function (event) {
+  // log error here
   console.log("Error: " + event.target.errorCode);
 };
 
-// This function will be executed if we attempt to submit a new budget event and there's no internet connection
 function saveRecord(record) {
   // open a new transaction with the database with read and write permission
   const transaction = db.transaction(["new_budget"], "readwrite");
@@ -38,7 +37,7 @@ function saveRecord(record) {
 }
 
 function uploadBudget() {
-  // open a transaction on db
+  // open a transaction on pending db
   const transaction = db.transaction(["new_budget"], "readwrite");
 
   // access object store
@@ -59,7 +58,7 @@ function uploadBudget() {
       })
         .then(response => response.json())
         .then(() => {
-          // delete records if successful
+          // delete records
           const transaction = db.transaction(["new_budget"], "readwrite");
           const store = transaction.objectStore("new_budget");
           store.clear();
