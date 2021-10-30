@@ -14,3 +14,6 @@ https://watch.screencastify.com/v/bGyFW6BWpnlmKwGQ7SBD
 Known issues:
 When trying to deploy to heroku, I faced issues getting the site deployed.
 ![image](https://user-images.githubusercontent.com/83327047/139522435-91dbcaa3-a859-41ca-a54c-3ca16f0bb9cb.png)
+
+## Link to deployed site (Non-functional)
+https://afternoon-taiga-32184.herokuapp.com/
